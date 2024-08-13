@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const basicAuth = require('basic-auth');
@@ -7,6 +8,11 @@ require('dotenv').config();
 const Alumno = require('./models/alumno'); 
 
 const app = express();
+
+app.use(cors({
+   origin: 'http://localhost:3000'
+}));
+
 app.use(bodyParser.json());
 
 // middleware de autenticacion basica
