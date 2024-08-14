@@ -1,14 +1,35 @@
 import React, { useState } from "react";
-import "../assets/css/insertarAlumno.css";
+import Swal from "sweetalert2";
 import axios from "axios";
+import "../assets/css/insertarAlumno.css";
 
 // credenciales para authentication
-const username = 'admin';
-const password = 'password';
+const username = "admin";
+const password = "password";
 const token = btoa(`${username}:${password}`);
 
 const headers = {
-    'Authorization': `Basic ${token}`
+  Authorization: `Basic ${token}`,
+};
+
+const notificarAlumnoCreado = () => {
+  Swal.fire({
+    position: "center",
+    icon: "success",
+    title: "El alumno ha sido creado correctamente!",
+    showConfirmButton: false,
+    timer: 1500,
+  });
+};
+
+const notificarError = () => {
+  Swal.fire({
+    position: "center",
+    icon: "error",
+    title: "Ha ocurrido un error creando el alumno.",
+    showConfirmButton: false,
+    timer: 1500
+  });
 };
 
 export default function InsertarAlumno() {
@@ -19,7 +40,6 @@ export default function InsertarAlumno() {
   const [grado, setGrado] = useState("");
   const [seccion, setSeccion] = useState("");
   const [fechaIngreso, setFechaIngreso] = useState("");
-  const [mensaje, setMensaje] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -35,8 +55,13 @@ export default function InsertarAlumno() {
     };
 
     try {
-      await axios.post("http://localhost:5000/crear-alumno", alumno, { headers });
-      setMensaje("Alumno creado exitosamente");
+      await axios.post("http://localhost:5000/crear-alumno", alumno, {
+        headers,
+      });
+
+      // notificando la creacion exitosa del alumno
+      notificarAlumnoCreado();
+
       // Limpiar formulario después de enviar
       setNombre("");
       setFechaNacimiento("");
@@ -46,7 +71,7 @@ export default function InsertarAlumno() {
       setSeccion("");
       setFechaIngreso("");
     } catch (error) {
-      setMensaje("Error al crear alumno");
+      notificarError();
       console.error("Error al crear alumno", error);
     }
   };
@@ -55,7 +80,6 @@ export default function InsertarAlumno() {
     <div className="container">
       <div className="container-form">
         <h2>Ingresar Alumno</h2>
-        {mensaje && <div className="alert alert-info">{mensaje}</div>}
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="nombre" className="form-label">

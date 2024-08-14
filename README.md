@@ -18,8 +18,9 @@ A continuación se muestran algunas peticiones realizadas con Postman.
 - Consultar un alumno por grado
     ![consultando backend](https://imgur.com/WMy6bZo.png)
 ## Frontend
-Para el frontend se utilizó React y Bootstrap. Y Axios para el consumo del API.
+Para el frontend se utilizó React y Bootstrap. Y Axios para el consumo del API. Así como SweetAlert para notificar al usuario sobre la creación de los usuarios. 
+
 - Insertando alumno
-    ![insertando frontend](https://imgur.com/93uYTXS.png)
+    ![insertando frontend](https://imgur.com/haCFd5eS.png)
 - Consultando alumnos
-    ![consultando frontend](https://imgur.com/EOklcfV.png)
+    ![consultando frontend](https://imgur.com/IrMA2mR.png)
