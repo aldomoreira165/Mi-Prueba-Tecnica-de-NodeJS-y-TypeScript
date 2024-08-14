@@ -21,6 +21,6 @@ A continuación se muestran algunas peticiones realizadas con Postman.
 Para el frontend se utilizó React y Bootstrap. Y Axios para el consumo del API. Así como SweetAlert para notificar al usuario sobre la creación de los usuarios. 
 
 - Insertando alumno
-    ![insertando frontend](https://imgur.com/haCFd5eS.png)
+    ![insertando frontend](https://imgur.com/haCFd5e.png)
 - Consultando alumnos
     ![consultando frontend](https://imgur.com/IrMA2mR.png)
